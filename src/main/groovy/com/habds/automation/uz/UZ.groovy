@@ -33,9 +33,7 @@ class UZ {
     }
 
     static def findTrains(String from, String to, String day, int hour) {
-        def profile = new FirefoxProfile()
-        profile.setPreference("intl.accept_languages", "uk")
-        def driver = new FirefoxDriver(profile)
+        def driver = getDriver()
         try {
             driver.get("http://booking.uz.gov.ua/")
 
@@ -88,6 +86,12 @@ class UZ {
                             .collectEntries { k, v -> [(k): v[0].findElement(By.xpath(".//b")).text] }
             ]
         }
+    }
+
+    private static RemoteWebDriver getDriver() {
+        def profile = new FirefoxProfile()
+        profile.setPreference("intl.accept_languages", "uk")
+        return new FirefoxDriver(profile)
     }
 
     private static void wait(RemoteWebDriver driver, long seconds, Closure<Boolean> condition) {
