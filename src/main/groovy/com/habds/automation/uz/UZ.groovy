@@ -80,7 +80,7 @@ class UZ {
                     "from"     : stations[0],
                     "to"       : stations[1],
                     "departure": date[0] + " " + time[0],
-                    "arrival"  : date[1] + " " + time[0],
+                    "arrival"  : date[1] + " " + time[1],
                     "duration" : it.findElement(By.xpath(".//td[@class='dur']")).text,
                     "places"   : it
                             .findElements(By.xpath(".//td[@class='place']/div"))
